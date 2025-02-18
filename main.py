@@ -1,4 +1,3 @@
-  GNU nano 4.8                                           main.py                                                     import argparse
 from model_pipeline import prepare_data, train_model, evaluate_model, save_model, load_model
 
 def main():
