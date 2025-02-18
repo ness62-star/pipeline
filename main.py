@@ -2,10 +2,10 @@ from model_pipeline import prepare_data, train_model, evaluate_model, save_model
 import argparse
 
 def main():
-    # Parse les arguments de ligne de commande
+     # Parse command-line arguments
     parser = argparse.ArgumentParser(description="Decision Tree Churn Prediction")
-    parser.add_argument("--train_file", type=str, required=True, help="Train file path")
-    parser.add_argument("--test_file", type=str, required=True, help="Test file path")
+    parser.add_argument("--train_file", type=str, default="churn-bigml-80.csv", help="Train file path")
+    parser.add_argument("--test_file", type=str, default="churn-bigml-20.csv", help="Test file path")
     parser.add_argument("--max_depth", type=int, default=None, help="Maximum depth of the tree")
     parser.add_argument("--save", action='store_true', help="Save the trained model")
     args = parser.parse_args()
