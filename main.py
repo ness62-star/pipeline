@@ -1,4 +1,5 @@
 from model_pipeline import prepare_data, train_model, evaluate_model, save_model, load_model
+import argparse
 
 def main():
     # Parse les arguments de ligne de commande
