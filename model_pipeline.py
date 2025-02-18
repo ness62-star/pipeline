@@ -55,3 +55,21 @@ def load_model(filename="decision_tree_model.pkl"):
 def evaluate_model(model, X_test, y_test):
     """Évaluer le modèle et afficher les métriques de performance."""
     y_pred = model.predict(X_test)
+
+    # Accuracy
+    accuracy = accuracy_score(y_test, y_pred)
+    print(f'Accuracy: {accuracy:.4f}')
+
+    # Classification Report
+    print("\nClassification Report:")
+    print(classification_report(y_test, y_pred))
+
+    # Confusion Matrix
+    cm = confusion_matrix(y_test, y_pred)
+    disp = ConfusionMatrixDisplay(confusion_matrix=cm)
+    disp.plot(cmap=plt.cm.Blues)
+    plt.title("Confusion Matrix")
+    plt.show()
+
+    # Retourner la précision pour qu'elle soit utilisée dans le main.py
+    return accuracy
