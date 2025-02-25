@@ -206,73 +206,8 @@ pipeline {
                 echo     plot_tree(model, max_depth=3, feature_names=X_test.columns, filled=True, rounded=True) >> create_report.py
                 echo     plt.savefig("reports/decision_tree.png", bbox_inches="tight") >> create_report.py
                 echo. >> create_report.py
-                echo     # Create HTML report >> create_report.py
-                echo     html = f""" >> create_report.py
-                echo     ^<!DOCTYPE html^> >> create_report.py
-                echo     ^<html^> >> create_report.py
-                echo     ^<head^> >> create_report.py
-                echo         ^<title^>Churn Prediction Model Report^</title^> >> create_report.py
-                echo         ^<style^> >> create_report.py
-                echo             body { font-family: Arial, sans-serif; margin: 20px; } >> create_report.py
-                echo             h1, h2 { color: #2c3e50; } >> create_report.py
-                echo             .container { max-width: 1200px; margin: 0 auto; } >> create_report.py
-                echo             .metrics { display: flex; justify-content: space-around; margin: 20px 0; } >> create_report.py
-                echo             .metric-box { background-color: #f8f9fa; padding: 15px; border-radius: 5px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); } >> create_report.py
-                echo             table { border-collapse: collapse; width: 100%%; margin: 20px 0; } >> create_report.py
-                echo             th, td { border: 1px solid #ddd; padding: 8px; text-align: left; } >> create_report.py
-                echo             th { background-color: #f2f2f2; } >> create_report.py
-                echo             tr:nth-child(even) { background-color: #f9f9f9; } >> create_report.py
-                echo             .image-container { text-align: center; margin: 20px 0; } >> create_report.py
-                echo             img { max-width: 100%%; height: auto; } >> create_report.py
-                echo         ^</style^> >> create_report.py
-                echo     ^</head^> >> create_report.py
-                echo     ^<body^> >> create_report.py
-                echo         ^<div class="container"^> >> create_report.py
-                echo             ^<h1^>Churn Prediction Model Report^</h1^> >> create_report.py
-                echo             ^<p^>Date: {pd.Timestamp.now().strftime('%%Y-%%m-%%d %%H:%%M:%%S')}^</p^> >> create_report.py
-                echo. >> create_report.py
-                echo             ^<h2^>Model Performance^</h2^> >> create_report.py
-                echo             ^<div class="metrics"^> >> create_report.py
-                echo                 ^<div class="metric-box"^> >> create_report.py
-                echo                     ^<h3^>Accuracy^</h3^> >> create_report.py
-                echo                     ^<p style="font-size: 24px; font-weight: bold;"^>{accuracy:.4f}^</p^> >> create_report.py
-                echo                 ^</div^> >> create_report.py
-                echo                 ^<div class="metric-box"^> >> create_report.py
-                echo                     ^<h3^>Precision^</h3^> >> create_report.py
-                echo                     ^<p style="font-size: 24px; font-weight: bold;"^>{class_report['True']['precision']:.4f}^</p^> >> create_report.py
-                echo                 ^</div^> >> create_report.py
-                echo                 ^<div class="metric-box"^> >> create_report.py
-                echo                     ^<h3^>Recall^</h3^> >> create_report.py
-                echo                     ^<p style="font-size: 24px; font-weight: bold;"^>{class_report['True']['recall']:.4f}^</p^> >> create_report.py
-                echo                 ^</div^> >> create_report.py
-                echo                 ^<div class="metric-box"^> >> create_report.py
-                echo                     ^<h3^>F1 Score^</h3^> >> create_report.py
-                echo                     ^<p style="font-size: 24px; font-weight: bold;"^>{class_report['True']['f1-score']:.4f}^</p^> >> create_report.py
-                echo                 ^</div^> >> create_report.py
-                echo             ^</div^> >> create_report.py
-                echo. >> create_report.py
-                echo             ^<h2^>Feature Importance^</h2^> >> create_report.py
-                echo             ^<table^> >> create_report.py
-                echo                 ^<tr^> >> create_report.py
-                echo                     ^<th^>Feature^</th^> >> create_report.py
-                echo                     ^<th^>Importance^</th^> >> create_report.py
-                echo                 ^</tr^> >> create_report.py
-                echo                 {''.join(f'^<tr^>^<td^>{row.Feature}^</td^>^<td^>{row.Importance:.4f}^</td^>^</tr^>' for _, row in feature_importance.head(10).iterrows())} >> create_report.py
-                echo             ^</table^> >> create_report.py
-                echo. >> create_report.py
-                echo             ^<h2^>Decision Tree Visualization^</h2^> >> create_report.py
-                echo             ^<div class="image-container"^> >> create_report.py
-                echo                 ^<img src="decision_tree.png" alt="Decision Tree Visualization"^> >> create_report.py
-                echo             ^</div^> >> create_report.py
-                echo. >> create_report.py
-                echo             ^<h2^>Confusion Matrix^</h2^> >> create_report.py
-                echo             ^<div class="image-container"^> >> create_report.py
-                echo                 ^<img src="confusion_matrix.png" alt="Confusion Matrix"^> >> create_report.py
-                echo             ^</div^> >> create_report.py
-                echo         ^</div^> >> create_report.py
-                echo     ^</body^> >> create_report.py
-                echo     ^</html^> >> create_report.py
-                echo     """ >> create_report.py
+                echo     # Create HTML report as a single multi-line string >> create_report.py
+                echo     html = f"""^<!DOCTYPE html^>^<html^>^<head^>^<title^>Churn Prediction Model Report^</title^>^<style^>body { font-family: Arial, sans-serif; margin: 20px; } h1, h2 { color: #2c3e50; } .container { max-width: 1200px; margin: 0 auto; } .metrics { display: flex; justify-content: space-around; margin: 20px 0; } .metric-box { background-color: #f8f9fa; padding: 15px; border-radius: 5px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); } table { border-collapse: collapse; width: 100%%; margin: 20px 0; } th, td { border: 1px solid #ddd; padding: 8px; text-align: left; } th { background-color: #f2f2f2; } tr:nth-child(even) { background-color: #f9f9f9; } .image-container { text-align: center; margin: 20px 0; } img { max-width: 100%%; height: auto; }^</style^>^</head^>^<body^>^<div class="container"^>^<h1^>Churn Prediction Model Report^</h1^>^<p^>Date: {pd.Timestamp.now().strftime('%%Y-%%m-%%d %%H:%%M:%%S')}^</p^>^<h2^>Model Performance^</h2^>^<div class="metrics"^>^<div class="metric-box"^>^<h3^>Accuracy^</h3^>^<p style="font-size: 24px; font-weight: bold;"^>{accuracy:.4f}^</p^>^</div^>^<div class="metric-box"^>^<h3^>Precision^</h3^>^<p style="font-size: 24px; font-weight: bold;"^>{class_report['True']['precision']:.4f}^</p^>^</div^>^<div class="metric-box"^>^<h3^>Recall^</h3^>^<p style="font-size: 24px; font-weight: bold;"^>{class_report['True']['recall']:.4f}^</p^>^</div^>^<div class="metric-box"^>^<h3^>F1 Score^</h3^>^<p style="font-size: 24px; font-weight: bold;"^>{class_report['True']['f1-score']:.4f}^</p^>^</div^>^</div^>^<h2^>Feature Importance^</h2^>^<table^>^<tr^>^<th^>Feature^</th^>^<th^>Importance^</th^>^</tr^>{''.join(f'^<tr^>^<td^>{row.Feature}^</td^>^<td^>{row.Importance:.4f}^</td^>^</tr^>' for _, row in feature_importance.head(10).iterrows())}^</table^>^<h2^>Decision Tree Visualization^</h2^>^<div class="image-container"^>^<img src="decision_tree.png" alt="Decision Tree Visualization"^>^</div^>^<h2^>Confusion Matrix^</h2^>^<div class="image-container"^>^<img src="confusion_matrix.png" alt="Confusion Matrix"^>^</div^>^</div^>^</body^>^</html^>""" >> create_report.py
                 echo. >> create_report.py
                 echo     with open("reports/model_report.html", "w") as f: >> create_report.py
                 echo         f.write(html) >> create_report.py
@@ -282,7 +217,7 @@ pipeline {
                 echo if __name__ == "__main__": >> create_report.py
                 echo     create_report() >> create_report.py
                 
-                rem Fix HTML escaping for Windows batch
+                rem Fix HTML escaping for Windows batch (remove ^ characters)
                 powershell -Command "(Get-Content create_report.py) -replace '\\^', '' | Set-Content create_report.py"
                 
                 rem Run the report generation script
