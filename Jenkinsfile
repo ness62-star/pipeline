@@ -213,17 +213,17 @@ pipeline {
                 echo     ^<head^> >> create_report.py
                 echo         ^<title^>Churn Prediction Model Report^</title^> >> create_report.py
                 echo         ^<style^> >> create_report.py
-                echo             body {{ font-family: Arial, sans-serif; margin: 20px; }} >> create_report.py
-                echo             h1, h2 {{ color: #2c3e50; }} >> create_report.py
-                echo             .container {{ max-width: 1200px; margin: 0 auto; }} >> create_report.py
-                echo             .metrics {{ display: flex; justify-content: space-around; margin: 20px 0; }} >> create_report.py
-                echo             .metric-box {{ background-color: #f8f9fa; padding: 15px; border-radius: 5px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }} >> create_report.py
-                echo             table {{ border-collapse: collapse; width: 100%%; margin: 20px 0; }} >> create_report.py
-                echo             th, td {{ border: 1px solid #ddd; padding: 8px; text-align: left; }} >> create_report.py
-                echo             th {{ background-color: #f2f2f2; }} >> create_report.py
-                echo             tr:nth-child(even) {{ background-color: #f9f9f9; }} >> create_report.py
-                echo             .image-container {{ text-align: center; margin: 20px 0; }} >> create_report.py
-                echo             img {{ max-width: 100%%; height: auto; }} >> create_report.py
+                echo             body { font-family: Arial, sans-serif; margin: 20px; } >> create_report.py
+                echo             h1, h2 { color: #2c3e50; } >> create_report.py
+                echo             .container { max-width: 1200px; margin: 0 auto; } >> create_report.py
+                echo             .metrics { display: flex; justify-content: space-around; margin: 20px 0; } >> create_report.py
+                echo             .metric-box { background-color: #f8f9fa; padding: 15px; border-radius: 5px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); } >> create_report.py
+                echo             table { border-collapse: collapse; width: 100%%; margin: 20px 0; } >> create_report.py
+                echo             th, td { border: 1px solid #ddd; padding: 8px; text-align: left; } >> create_report.py
+                echo             th { background-color: #f2f2f2; } >> create_report.py
+                echo             tr:nth-child(even) { background-color: #f9f9f9; } >> create_report.py
+                echo             .image-container { text-align: center; margin: 20px 0; } >> create_report.py
+                echo             img { max-width: 100%%; height: auto; } >> create_report.py
                 echo         ^</style^> >> create_report.py
                 echo     ^</head^> >> create_report.py
                 echo     ^<body^> >> create_report.py
@@ -283,7 +283,7 @@ pipeline {
                 echo     create_report() >> create_report.py
                 
                 rem Fix HTML escaping for Windows batch
-                powershell -Command "(Get-Content create_report.py) -replace '\^', '' | Set-Content create_report.py"
+                powershell -Command "(Get-Content create_report.py) -replace '\\^', '' | Set-Content create_report.py"
                 
                 rem Run the report generation script
                 python create_report.py
