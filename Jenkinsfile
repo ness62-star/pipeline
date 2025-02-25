@@ -96,7 +96,7 @@ pipeline {
                     echo test_df.to_csv('churn-bigml-20.csv', index=False) >> generate_sample_data.py
                     
                     rem Fix the comparison operators (Windows bat escaping)
-                    powershell -Command "(Get-Content generate_sample_data.py) -replace '\^>', '>' | Set-Content generate_sample_data.py"
+                    powershell -Command "(Get-Content generate_sample_data.py) -replace '\\^>', '>' | Set-Content generate_sample_data.py"
                     
                     rem Run the script to generate data
                     python generate_sample_data.py
